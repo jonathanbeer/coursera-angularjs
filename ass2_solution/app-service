@@ -1,0 +1,70 @@
+(function () {
+'use strict';
+
+angular.module('ShoppingListApp', [])
+.controller('ShoppingListController', ShoppingListController)
+.service('ShoppingListService', ShoppingListService);
+
+ShoppingListController.$inject = ['ShoppingListService'];
+function ShoppingListController(ShoppingListService) {
+  var list = this;
+  // var shoppingList = ShoppingListFactory();
+
+  list.itemsToBuy = ShoppingListService.getItemsToBuy();
+  list.itemsBought = ShoppingListService.getItemsBought();
+
+  list.buyItem = function (itemIdx) {
+    ShoppingListService.buyItem(itemIdx);
+  };
+};
+
+  function ShoppingListService() {
+    var service = this;
+    var itemsToBuy = [
+      {
+        name: "Milk",
+        quantity: "2"
+      },
+      {
+        name: "Donuts",
+        quantity: "200"
+      },
+      {
+        name: "Cookies",
+        quantity: "300"
+      },
+      {
+        name: "Chocolate",
+        quantity: "5"
+      },
+      {
+        name: "Cheesecake",
+        quantity: "5"
+      }
+    ];
+    var itemsBought = [];
+
+    service.buyItem = function(itemIdx) {
+      itemsBought.push(itemsToBuy[itemIdx]);
+      itemsToBuy.splice(itemIdx, 1);
+    };
+
+    service.getItemsToBuy = function () {
+      return itemsToBuy;
+    };
+
+    service.getItemsBought = function () {
+      return itemsBought;
+    };
+
+  }
+
+// function ShoppingListFactory() {
+//   var factory = function () {
+//     var shoppingList = new ShoppingListService();
+//     return shoppingList;
+//   };
+//
+// };
+
+})();
