@@ -13,7 +13,7 @@ function FoundItemsDirective() {
     scope: {
       //list: '=myList', // two-way binding attribute, i.e. <found-items my-list=".."/>
       found: '<', // one-way binding attrib, ie. <found-items found="...">
-      message: '<message',
+      message: '<displayMessage',
       onRemove: '&' // parent in charge of data, but directive needs button to remove it
       //onRemove is used in parent template on this directive
     },
