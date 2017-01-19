@@ -1,0 +1,19 @@
+<div class="container">
+
+  <div ng-if="myInfoCtrl.user != null">
+    <!-- Show User -->
+    <h2> Hi, {{ myInfoCtrl.user.first_name }}!</h2>
+
+    First: {{ myInfoCtrl.user.first_name }}<br/>
+    Last: {{ myInfoCtrl.user.last_name}} <br/>
+    Email: {{ myInfoCtrl.user.email }} <br/>
+    Phone: {{ myInfoCtrl.user.phone }}<br/>
+    <h3> Your favorite item: </h3>
+    <menu-item menu-item="myInfoCtrl.user.fav_dish"></menu-item>
+  </div>
+
+  <div ng-if="myInfoCtrl.user === null">
+    Not Signed Up Yet. <a ui-sref="public.sign-up">Sign up Now!</a>
+  </div>
+
+</div>
